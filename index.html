@@ -54,10 +54,12 @@
       <header class="hero">
         <div class="content-width">
           <div class="hero-grid">
-            <div class="hero-content">
-              <div id="hero-variant">
-                <!-- Content will be dynamically inserted here -->
-              </div>
+            <div class="hero-content" id="hero-variant">
+              <h1>Mountain<br />Pass 🏔️ 👨‍💻<br />Coding</h1>
+              <hr/>
+              <p class="tagline">YOU CAN LEARN HOW TO CODE</p>
+              <p>DON'T LISTEN TO THEM</p>
+              <p class="subtitle">FROM STUCK TO SOLVING</p>
             </div>
             <div class="hero-image">
               <img src="images/coder.jpg" alt="Coder" draggable="false">
@@ -190,23 +192,33 @@
       }
     </script>
 
-    <!-- Add this script before the closing body tag -->
+    <!-- Add this somewhere for testing (remove in production) -->
+    <!-- <div style="position: fixed; bottom: 10px; right: 10px; background: #f8f9fa; padding: 10px; border-radius: 5px; border: 1px solid #dee2e6;">
+      <p>Test Links:</p>
+      <a href="?v=code">Code Version</a> | 
+      <a href="?v=ai">AI Version</a> | 
+      <a href="?v=confidence">Confidence Version</a>
+    </div> -->
+
     <script>
-      // Define the three variants
+      // Define the three variants with unique IDs
       const variants = [
         {
+          id: 'code',
           title: "Mountain<br />Pass 🏔️ 👨‍💻<br />Coding",
           tagline: "LEARN HOW TO CODE",
           message: "DON'T LISTEN TO THEM",
           subtitle: "FROM STUCK TO SOLVING"
         },
         {
+          id: 'ai',
           title: "Mountain<br />Pass 🏔️ 👨‍💻<br />Coding",
           tagline: "LEARN HOW TO CODE WITH AI",
           message: "FUTURE-PROOF YOUR CAREER",
           subtitle: "FROM NOVICE TO AI DEVELOPER"
         },
         {
+          id: 'confidence',
           title: "Mountain<br />Pass 🏔️ 👨‍💻<br />Coding",
           tagline: "GAIN TECHNICAL CONFIDENCE",
           message: "MASTER THE BASICS",
@@ -214,10 +226,16 @@
         }
       ];
 
-      // Function to randomly select and display a variant
       function displayVariant() {
-        // Get a random variant (or use more sophisticated selection logic)
-        const variant = variants[Math.floor(Math.random() * variants.length)];
+        // Check URL parameters for variant
+        const urlParams = new URLSearchParams(window.location.search);
+        const variantId = urlParams.get('v');
+        
+        // Find the specified variant or get a random one
+        let variant = variants.find(v => v.id === variantId);
+        if (!variant) {
+          variant = variants[Math.floor(Math.random() * variants.length)];
+        }
         
         // Create the HTML
         const html = `
@@ -231,15 +249,15 @@
         // Insert into the page
         document.getElementById('hero-variant').innerHTML = html;
         
-        // Optional: Track which variant was shown (if using analytics)
+        // Track which variant was shown
         if (typeof gtag !== 'undefined') {
           gtag('event', 'variant_shown', {
-            'variant': variant.tagline
+            'variant': variant.tagline,
+            'variant_id': variant.id
           });
         }
       }
 
-      // Run when the page loads
       window.addEventListener('DOMContentLoaded', displayVariant);
     </script>
   </body>
