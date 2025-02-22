@@ -247,6 +247,15 @@ body {
   footer a {
     color: inherit;
     text-decoration: none;
+    transition: opacity 0.2s ease;
+  }
+  
+  footer a:hover {
+    opacity: 0.8;
+  }
+  
+  footer .bi-telephone {
+    margin-right: 5px;
   }
   
   @media (max-width: 768px) {
@@ -587,10 +596,18 @@ body {
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   }
   
+  .btn-secondary {
+    background-color: #6B5B95 !important; /* Lavender purple */
+    border-color: #6B5B95 !important;
+    color: white !important;
+    transition: all 0.3s ease;
+  }
+  
   .btn-secondary:hover {
-    background-color: var(--color-secondary);
+    background-color: #574b7c !important; /* Slightly darker shade */
+    border-color: #574b7c !important;
     transform: translateY(-2px);
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 6px rgba(107, 91, 149, 0.2);
   }
   
   .features-section {
