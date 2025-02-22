@@ -55,11 +55,9 @@
         <div class="content-width">
           <div class="hero-grid">
             <div class="hero-content">
-              <h1>Mountain<br />Pass 🏔️ 👨‍💻<br />Coding</h1>
-              <hr/>
-              <p class="tagline">YOU CAN LEARN HOW TO CODE</p>
-              <p>DON'T LISTEN TO THEM</p>
-              <p class="subtitle">FROM STUCK TO SOLVING</p>
+              <div id="hero-variant">
+                <!-- Content will be dynamically inserted here -->
+              </div>
             </div>
             <div class="hero-image">
               <img src="images/coder.jpg" alt="Coder" draggable="false">
@@ -73,12 +71,12 @@
           <h2>OUR<br />COURSES</h2>
           <div class="courses-grid">
             <div class="course">
-              <h3>LIVE INSTRUCTOR</h3>
-              <p>High quality instructors with compassion, emotional intelligence, and can teach to the student personally.</p>
+              <h3>RELEVANT</h3>
+              <p>Using AI tools, we'll help you build something meaningful to you. No more "Hello World" or introductory programs that don't relate to student's lives.</p>
             </div>
             <div class="course">
-              <h3>RELEVANT</h3>
-              <p>No more "Hello World" or introductory programs that don't relate to student's lives.</p>
+              <h3>LIVE INSTRUCTOR</h3>
+              <p>High quality instructors with compassion, emotional intelligence, and can teach to the student personally.</p>
             </div>
             <div class="course">
               <h3>NO CURTAIN</h3>
@@ -190,6 +188,59 @@
           document.getElementById("copy-sticky").className = "bi bi-sticky";
         }, 300);
       }
+    </script>
+
+    <!-- Add this script before the closing body tag -->
+    <script>
+      // Define the three variants
+      const variants = [
+        {
+          title: "Mountain<br />Pass 🏔️ 👨‍💻<br />Coding",
+          tagline: "LEARN HOW TO CODE",
+          message: "DON'T LISTEN TO THEM",
+          subtitle: "FROM STUCK TO SOLVING"
+        },
+        {
+          title: "Mountain<br />Pass 🏔️ 👨‍💻<br />Coding",
+          tagline: "LEARN HOW TO CODE WITH AI",
+          message: "FUTURE-PROOF YOUR CAREER",
+          subtitle: "FROM NOVICE TO AI DEVELOPER"
+        },
+        {
+          title: "Mountain<br />Pass 🏔️ 👨‍💻<br />Coding",
+          tagline: "GAIN TECHNICAL CONFIDENCE",
+          message: "MASTER THE BASICS",
+          subtitle: "FROM UNCERTAIN TO UNSTOPPABLE"
+        }
+      ];
+
+      // Function to randomly select and display a variant
+      function displayVariant() {
+        // Get a random variant (or use more sophisticated selection logic)
+        const variant = variants[Math.floor(Math.random() * variants.length)];
+        
+        // Create the HTML
+        const html = `
+          <h1>${variant.title}</h1>
+          <hr/>
+          <p class="tagline">${variant.tagline}</p>
+          <p>${variant.message}</p>
+          <p class="subtitle">${variant.subtitle}</p>
+        `;
+        
+        // Insert into the page
+        document.getElementById('hero-variant').innerHTML = html;
+        
+        // Optional: Track which variant was shown (if using analytics)
+        if (typeof gtag !== 'undefined') {
+          gtag('event', 'variant_shown', {
+            'variant': variant.tagline
+          });
+        }
+      }
+
+      // Run when the page loads
+      window.addEventListener('DOMContentLoaded', displayVariant);
     </script>
   </body>
 </html>
