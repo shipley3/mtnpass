@@ -21,6 +21,8 @@
 body {
   font-family: var(--font-body) !important;
   font-weight: 400 !important;
+  margin: 0;
+  padding: 0;
 } 
 
 .App {
@@ -28,6 +30,11 @@ body {
     background-color: #E6E6FA;
   }
   
+  header {
+    margin: 0;
+    padding: 0;
+  }
+
   /* Hero/Header section */
   .hero {
     padding: 4rem 0;
