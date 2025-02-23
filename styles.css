@@ -1,4 +1,3 @@
-/* Copy all the styles from App.css here, removing any React-specific styles */ @import '../src/styles/brand.css';
 
 /* Font debugging - add !important to verify */
 :root {

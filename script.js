@@ -124,32 +124,6 @@ document.addEventListener('DOMContentLoaded', function() {
         setTimeout(showPopup, 30000);
     }
 
-    // Survey form functionality
-    const surveyForm = document.querySelector('#surveyForm');
-    if (surveyForm) {
-        surveyForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            fetch(surveyForm.action, {
-                method: surveyForm.method,
-                body: new FormData(surveyForm),
-                headers: {
-                    'Accept': 'application/json'
-                }
-            })
-            .then(response => response.json())
-            .then(data => {
-                if (data.ok) {
-                    surveyForm.reset();
-                    showPopup(); // Show popup after successful submission
-                }
-            })
-            .catch(error => {
-                console.error('Error:', error);
-            });
-        });
-    }
-
     // Survey form functionality (only runs on survey page)
     const priorAttempt = document.getElementById('prior_attempt');
     const platformsContainer = document.getElementById('platforms_container');
