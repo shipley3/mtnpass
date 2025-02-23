@@ -228,127 +228,13 @@
       </footer>
     </div>
 
-    <!-- Add script at the end of body -->
-    <script>
-      console.log("js ready");
-
-      document.getElementById("copy-email").addEventListener("click", copyFunc);
-      document.getElementById("copy-email").addEventListener("mousedown", changeIconDown);
-      document.getElementById("copy-email").addEventListener("mouseup", changeIconUp);
-
-      function copyFunc(){
-        var copyText = "PATRICK@MTNPASSCODE.COM";
-        navigator.clipboard.writeText(copyText);
-        console.log("copied!");
-      };
-
-      function changeIconDown(){
-        document.getElementById("copy-sticky").className = "bi bi-sticky-fill";
-      }
-
-      function changeIconUp(){
-        setTimeout(function(){
-          document.getElementById("copy-sticky").className = "bi bi-sticky";
-        }, 300);
-      }
-    </script>
-
-    <!-- Add this somewhere for testing (remove in production) -->
-    <!-- <div style="position: fixed; bottom: 10px; right: 10px; background: #f8f9fa; padding: 10px; border-radius: 5px; border: 1px solid #dee2e6;">
-      <p>Test Links:</p>
-      <a href="?v=code">Code Version</a> | 
-      <a href="?v=ai">AI Version</a> | 
-      <a href="?v=confidence">Confidence Version</a>
-    </div> -->
-
-    <script>
-      // Define the three variants with unique IDs
-      const variants = [
-        {
-          id: 'code',
-          title: "Mountain<br />Pass 🏔️ 👨‍💻<br />Coding",
-          tagline: "LEARN HOW TO CODE",
-          message: "MASTER THE BASICS",
-          subtitle: "5 LIVE CLASSES TO BUILD YOUR FIRST APP"
-        },
-        {
-          id: 'ai',
-          title: "Mountain<br />Pass 🏔️ 👨‍💻<br />Coding", 
-          tagline: "LEARN HOW TO CODE WITH AI",
-          message: "IF YOU CAN IMAGINE IT, YOU CAN BUILD IT",
-          subtitle: "5 LIVE CLASSES TO MASTER CODING WITH AI"
-        },
-        {
-          id: 'confidence',
-          title: "Mountain<br />Pass 🏔️ 👨‍💻<br />Coding",
-          tagline: "GAIN TECHNICAL CONFIDENCE", 
-          message: "YOU BELONG IN TECH",
-          subtitle: "5 LIVE CLASSES TO LEARN HOW TO CODE"
-        }
-      ];
-
-      function displayVariant() {
-        // Check URL parameters for variant
-        const urlParams = new URLSearchParams(window.location.search);
-        const variantId = urlParams.get('v');
-        
-        // Find the specified variant or get a random one
-        let variant = variants.find(v => v.id === variantId);
-        if (!variant) {
-          variant = variants[Math.floor(Math.random() * variants.length)];
-        }
-        
-        // Create the HTML
-        const html = `
-          <h1>${variant.title}</h1>
-          <hr/>
-          <p class="tagline">${variant.tagline}</p>
-          <p>${variant.message}</p>
-          <p class="subtitle">${variant.subtitle}</p>
-          
-          <div class="cta-button">
-            <a href="#signup" class="btn btn-secondary btn-lg">Get Started</a>
-          </div>
-        `;
-        
-        // Insert into the page
-        document.getElementById('hero-variant').innerHTML = html;
-        
-        // Track which variant was shown
-        if (typeof gtag !== 'undefined') {
-          gtag('event', 'variant_shown', {
-            'variant': variant.tagline,
-            'variant_id': variant.id
-          });
-        }
-      }
-
-      window.addEventListener('DOMContentLoaded', displayVariant);
-    </script>
-
     <!-- AI Popup -->
     <a href="https://github.com/shipley3/mtnpass.git" target="_blank">
       <div id="aiPopup" class="ai-popup" style="display: none;">
         <p>🗣️ Guess what?</p>
-        <p>I built this site from scratch in less than a day using AI 🚀</p>
+        <p>I built this site in less than a day using AI 🚀</p>
       </div>
     </a> 
-
-    <script>
-      // Show popup after 5 seconds
-      setTimeout(() => {
-        const popup = document.getElementById('aiPopup');
-        popup.style.display = 'block';
-        
-        // Add click handler to dismiss popup
-        popup.addEventListener('click', () => {
-          popup.classList.add('hiding');
-          setTimeout(() => {
-            popup.style.display = 'none';
-          }, 300);
-        });
-      }, 5000);
-    </script>
 
     <script src="script.js"></script>
   </body>

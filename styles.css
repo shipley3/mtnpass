@@ -1093,3 +1093,86 @@ body {
     color: #ff4444;
   }
   
+  /* Survey specific styles */
+  .survey-section {
+    background-color: #fff;
+    padding: 4rem 0;
+  }
+
+  .survey-form {
+    max-width: 800px;
+    margin: 0 auto;
+    background: #f8f9fa;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  }
+
+  .survey-group {
+    margin-bottom: 3rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid #e9ecef;
+  }
+
+  .survey-group h2 {
+    color: #6B5B95;
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .form-group {
+    margin-bottom: 1.5rem;
+  }
+
+  .form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: #333;
+    font-weight: 500;
+  }
+
+  .form-control {
+    border: 2px solid #ddd;
+    border-radius: 4px;
+    padding: 0.75rem;
+    width: 100%;
+    font-size: 1rem;
+    transition: border-color 0.2s ease;
+  }
+
+  .form-control:focus {
+    outline: none;
+    border-color: #6B5B95;
+  }
+
+  .submit-group {
+    text-align: center;
+    margin-top: 3rem;
+  }
+
+  /* Radio and checkbox styles */
+  .radio-group, .checkbox-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .scale-group {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    margin: 1rem 0;
+  }
+
+  /* Mobile responsiveness */
+  @media (max-width: 768px) {
+    .survey-form {
+      padding: 1rem;
+      margin: 1rem;
+    }
+    
+    .survey-group h2 {
+      font-size: 1.5rem;
+    }
+  }
+  
