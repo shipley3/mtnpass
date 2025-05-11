@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Challenges | Mountain Pass Coding</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" type="image/png" href="images/favicon.ico">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .code-block {
+            background: #f8f9fa;
+            padding: 1rem;
+            border-radius: 6px;
+            margin: 1rem 0;
+            font-family: monospace;
+            white-space: pre-wrap;
+        }
+        .nav-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin: 2rem 0;
+        }
+        .nav-buttons a {
+            text-decoration: none;
+            color: #6B5B95;
+            font-weight: bold;
+            padding: 0.5rem 1rem;
+            border: 2px solid #6B5B95;
+            border-radius: 6px;
+            transition: all 0.3s ease;
+        }
+        .nav-buttons a:hover {
+            background: #6B5B95;
+            color: white;
+        }
+        .challenge-section {
+            margin-bottom: 3rem;
+        }
+        .challenge-section h3 {
+            color: #6B5B95;
+            margin-bottom: 1rem;
+        }
+        .challenge-section h4 {
+            color: #444;
+            margin: 1.5rem 0 1rem;
+        }
+    </style>
+</head>
+<body class="App">
+    <header style="background: #6B5B95; color: #fff; padding: 2rem 0; text-align: center;">
+        <h1 style="margin: 0; font-size: 2.5rem; letter-spacing: 1px;">Challenges: Extend Your App</h1>
+    </header>
+
+    <main>
+        <section class="setup-section" style="background: #fff; margin: 2rem auto; border-radius: 12px; max-width: 800px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); padding: 2.5rem 2rem;">
+            <p style="font-size: 1.2rem; margin-bottom: 2rem;">Extend your "Pick Your Teacher" app with five creative and technical bonus challenges. Each one builds practical skills in React while making your app more interactive and visually engaging.</p>
+
+            <div class="challenge-section">
+                <h3>🔤 Task 1: Add a Comment to a Teacher Card</h3>
+                <p><strong>Goal:</strong> Let users leave a comment for a selected teacher.</p>
+                
+                <h4>Steps:</h4>
+                <ol>
+                    <li>
+                        <strong>Add Comment State</strong>
+                        <div class="code-block">
+const [comments, setComments] = useState({});</div>
+                    </li>
+                    <li>
+                        <strong>Show Input on Selection</strong>
+                        <div class="code-block">
+{selected === teacher.name && (
+  &lt;input
+    type="text"
+    placeholder="Leave a comment"
+    value={comments[teacher.name] || ""}
+    onChange={(e) =>
+      setComments({ ...comments, [teacher.name]: e.target.value })
+    }
+  /&gt;
+)}</div>
+                    </li>
+                    <li>
+                        <strong>Display Comment</strong>
+                        <div class="code-block">
+{comments[teacher.name] && (
+  &lt;p className="comment"&gt;💬 {comments[teacher.name]}&lt;/p&gt;
+)}</div>
+                    </li>
+                    <li>
+                        <strong>Optional Styling</strong>
+                        <div class="code-block">
+.comment {
+  font-style: italic;
+  color: #444;
+  margin-top: 0.5rem;
+}</div>
+                    </li>
+                </ol>
+                <p><strong>Copilot Prompt Ideas:</strong></p>
+                <ul>
+                    <li><code>// Track user comments for each teacher using React state</code></li>
+                    <li><code>// On input change, update comment for the selected teacher</code></li>
+                    <li><code>// Show the comment below the card if one has been entered</code></li>
+                    <li><code>// Style the comment to make it visually distinct</code></li>
+                </ul>
+            </div>
+
+            <div class="challenge-section">
+                <h3>➕ Task 2: Add Your Own Teacher</h3>
+                <p><strong>Goal:</strong> Let users input a new teacher and add them to the app.</p>
+                
+                <h4>Steps:</h4>
+                <ol>
+                    <li>
+                        <strong>Add State for Form Inputs and Teacher List</strong>
+                        <div class="code-block">
+const [newName, setNewName] = useState("");
+const [newSubject, setNewSubject] = useState("");</div>
+                    </li>
+                    <li>
+                        <strong>Render Form to Add</strong>
+                        <div class="code-block">
+&lt;input placeholder="Name" value={newName} onChange={(e) => setNewName(e.target.value)} /&gt;
+&lt;input placeholder="Subject" value={newSubject} onChange={(e) => setNewSubject(e.target.value)} /&gt;
+&lt;button onClick={() => {
+  if (!newName || !newSubject) return;
+  setTeachers([...teachers, { name: newName, subject: newSubject }]);
+  setNewName("");
+  setNewSubject("");
+}}&gt;Add Teacher&lt;/button&gt;</div>
+                    </li>
+                </ol>
+                <p><strong>Copilot Prompt Ideas:</strong></p>
+                <ul>
+                    <li><code>// Add input fields for new teacher name and subject</code></li>
+                    <li><code>// When the button is clicked, push a new teacher to the array</code></li>
+                    <li><code>// Clear the form after submission</code></li>
+                    <li><code>// Prevent submission if name or subject is blank</code></li>
+                </ul>
+            </div>
+
+            <div class="challenge-section">
+                <h3>📄 Task 3: Display Teachers on a Separate Page</h3>
+                <p><strong>Goal:</strong> Show the added teacher on a new view/page.</p>
+                
+                <h4>Steps:</h4>
+                <ol>
+                    <li>
+                        <strong>Add Page State</strong>
+                        <div class="code-block">
+const [page, setPage] = useState("home");</div>
+                    </li>
+                    <li>
+                        <strong>Conditional Rendering Based on Page</strong>
+                        <div class="code-block">
+{page === "home" ? (
+  &lt;HomePage /&gt;
+) : (
+  &lt;TeacherListPage /&gt;
+)}</div>
+                    </li>
+                    <li>
+                        <strong>Add Navigation Buttons</strong>
+                        <div class="code-block">
+&lt;button onClick={() => setPage("teachers")}&gt;View All Teachers&lt;/button&gt;
+&lt;button onClick={() => setPage("home")}&gt;Back to Home&lt;/button&gt;</div>
+                    </li>
+                </ol>
+                <p><strong>Copilot Prompt Ideas:</strong></p>
+                <ul>
+                    <li><code>// Use a page variable to switch between home and teacher list views</code></li>
+                    <li><code>// Create a navigation button to view all teachers</code></li>
+                    <li><code>// Render all teacher cards on the separate page</code></li>
+                    <li><code>// Add a back button to return to home view</code></li>
+                </ul>
+            </div>
+
+            <div class="challenge-section">
+                <h3>🎨 Task 4: Style Studio for Teacher Cards</h3>
+                <p><strong>Goal:</strong> Add custom color and emoji for each teacher.</p>
+                
+                <h4>Steps:</h4>
+                <ol>
+                    <li>
+                        <strong>Update Teachers Array with Style Fields</strong>
+                        <div class="code-block">
+const teachers = [
+  { name: "Gad Allon", subject: "Business Management", color: "#FFEFDB", emoji: "📊" },
+  { name: "Laura Huang", subject: "Entrepreneurship", color: "#E6F7FF", emoji: "🚀" },
+  { name: "Igor Kouzin", subject: "Finance", color: "#F0FFF0", emoji: "💰" },
+];</div>
+                    </li>
+                    <li>
+                        <strong>Apply Background Color & Emoji</strong>
+                        <div class="code-block">
+&lt;div className="card" style={{ backgroundColor: teacher.color }}&gt;
+  &lt;h2&gt;{teacher.emoji} {teacher.name}&lt;/h2&gt;
+  &lt;p&gt;{teacher.subject}&lt;/p&gt;
+&lt;/div&gt;</div>
+                    </li>
+                </ol>
+                <p><strong>Copilot Prompt Ideas:</strong></p>
+                <ul>
+                    <li><code>// Add color and emoji to each teacher object</code></li>
+                    <li><code>// Use inline styles to change the background color of the card</code></li>
+                    <li><code>// Add the emoji before the teacher name</code></li>
+                    <li><code>// Use different colors to visually separate teachers</code></li>
+                </ul>
+            </div>
+
+            <div class="challenge-section">
+                <h3>🎨 Task 5: Color & Emoji Picker</h3>
+                <p><strong>Goal:</strong> Let users customize the appearance of a new teacher card during creation.</p>
+                
+                <h4>Steps:</h4>
+                <ol>
+                    <li>
+                        <strong>Add Color & Emoji Inputs to the Form</strong>
+                        <div class="code-block">
+&lt;input type="color" value={newColor} onChange={(e) => setNewColor(e.target.value)} /&gt;
+&lt;input placeholder="Emoji" value={newEmoji} onChange={(e) => setNewEmoji(e.target.value)} /&gt;</div>
+                    </li>
+                    <li>
+                        <strong>Update the New Teacher Object</strong>
+                        <div class="code-block">
+setTeachers([...teachers, {
+  name: newName,
+  subject: newSubject,
+  color: newColor,
+  emoji: newEmoji
+}]);</div>
+                    </li>
+                    <li>
+                        <strong>Add State Variables</strong>
+                        <div class="code-block">
+const [newColor, setNewColor] = useState("#ffffff");
+const [newEmoji, setNewEmoji] = useState("");</div>
+                    </li>
+                </ol>
+                <p><strong>Copilot Prompt Ideas:</strong></p>
+                <ul>
+                    <li><code>// Add color picker and emoji input fields to the form</code></li>
+                    <li><code>// Include color and emoji when creating a new teacher</code></li>
+                    <li><code>// Use a controlled input for color and emoji</code></li>
+                    <li><code>// Let users preview their card before adding</code></li>
+                </ul>
+            </div>
+
+            <div class="nav-buttons" style="max-width: 800px; margin: 2rem auto;">
+                <a href="demo-lesson.html">← Back to Lesson</a>
+                <a href="setup.html" target="_blank">Back to Setup</a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div>
+            <p>EMAIL: 
+                <a id="copy-email" style="cursor: pointer;">
+                    PATRICK@MTNPASSCODE.COM
+                    <i id="copy-sticky" class="bi bi-sticky"></i>
+                </a>
+            </p>
+            <p>
+                <a href="https://www.linkedin.com/in/patrick-shipley-059893126/" target="_blank" style="text-decoration: none; color: inherit;">
+                    <i class="bi bi-linkedin"></i> LinkedIn
+                </a>
+            </p>
+        </div>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html> 

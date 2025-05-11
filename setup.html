@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mountain Pass Coding Setup</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" type="image/png" href="images/favicon.ico">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="App">
+    <header style="background: #6B5B95; color: #fff; padding: 2rem 0; text-align: center;">
+        <h1 style="margin: 0; font-size: 2.5rem; letter-spacing: 1px;">Mountain Pass Coding Setup</h1>
+    </header>
+
+    <main>
+        <!-- Section 1: Setup Instructions -->
+        <section class="setup-section" style="background: #fff; margin: 2rem auto; border-radius: 12px; max-width: 800px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); padding: 2.5rem 2rem;">
+            <h2 style="color: #6B5B95; font-size: 2rem; margin-bottom: 1.5rem;">#1: Setup Instructions</h2>
+            <h4>🚀 Getting Ready: VS Code, GitHub Copilot, and Your Files</h4>
+            <ol>
+                <li>
+                    <b>Install Visual Studio Code (VS Code)</b>
+                    <ul>
+                        <li>Go to <a href="https://code.visualstudio.com/" target="_blank">https://code.visualstudio.com/</a></li>
+                        <li>Click "Download for [Your OS]"</li>
+                        <li>Follow the installation prompts</li>
+                    </ul>
+                    <div style="margin-top: 0.5rem;">
+                        <span style="font-weight: bold;">✨ Optional: Install the <span style="color: #6B5B95;">VS Code Icons Theme</span></span>
+                        <ul>
+                            <li>In VS Code, go to Extensions (left sidebar)</li>
+                            <li>Search for <b>"VS Code Icons"</b> and install it</li>
+                            <li>After installing, click "Set File Icon Theme" to apply it</li>
+                            <li>This makes your file explorer easier to navigate and visually organized</li>
+                        </ul>
+                    </div>
+                </li>
+                <li>
+                    <b>Install Node.js</b>
+                    <ul>
+                        <li>Go to <a href="https://nodejs.org/" target="_blank">https://nodejs.org/</a></li>
+                        <li>Download the <b>LTS version</b> (Long Term Support)</li>
+                        <li>Install and restart your computer if needed</li>
+                    </ul>
+                </li>
+                <li>
+                    <b>Set Up GitHub Copilot</b>
+                    <ul>
+                        <li>Create a <b>GitHub Education account</b> using your Penn email:
+                            <ul>
+                                <li>Go to <a href="https://education.github.com/" target="_blank">https://education.github.com/</a></li>
+                                <li>Click "Get benefits" and follow the instructions to verify your student status</li>
+                            </ul>
+                        </li>
+                        <li>Once approved, you can access GitHub Copilot for free</li>
+                        <li>Install the <b>GitHub Copilot extension</b> in VS Code</li>
+                        <li>Sign in to VS Code with your GitHub Education account</li>
+                        <li>Ensure GitHub Copilot is enabled (check the bottom bar of VS Code)</li>
+                    </ul>
+                </li>
+                <li>
+                    <b>Download the Project Files</b>
+                    <ul>
+                        <li>Download the code here: <a href="https://github.com/shipley3/demo-course" target="_blank">https://github.com/shipley3/demo-course</a></li>
+                        <li>Click the green "Code" button and choose "Download ZIP"</li>
+                        <li>Unzip the folder and open it in VS Code:
+                            <ul>
+                                <li>VS Code &gt; File &gt; Open Folder &gt; Select unzipped folder</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <b>Run the App</b>
+                    <p>In your terminal inside VS Code:</p>
+                    <pre style="background: #f8f9fa; padding: 1rem; border-radius: 6px;"><code>npm install
+npm run dev</code></pre>
+                    <p>Then open your browser and go to: <code>http://localhost:5173</code></p>
+                </li>
+            </ol>
+        </section>
+
+        <!-- Section 2: Quick React Dictionary -->
+        <section class="setup-section" style="background: #fff; margin: 2rem auto; border-radius: 12px; max-width: 800px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); padding: 2.5rem 2rem;">
+            <h2 style="color: #6B5B95; font-size: 2rem; margin-bottom: 1.5rem;">#2: Quick React Dictionary</h2>
+            <h4>🌟 What is React?</h4>
+            <p>React is a tool that helps us build websites using reusable pieces called <b>components</b>. Instead of updating the whole page when something changes, React only updates the part that needs to change. This keeps things fast and organized.</p>
+            <p>Think of React as LEGO: you build a webpage using blocks (components) that each have their own job.</p>
+            <h4>⚡ What is Vite?</h4>
+            <p>Vite is the tool that runs our app while we build it. It:</p>
+            <ul>
+                <li>Starts your app quickly</li>
+                <li>Instantly shows updates in your browser when you change the code</li>
+                <li>Prepares all your files for sharing or publishing later</li>
+            </ul>
+            <h4>🔤 Other Helpful Terms</h4>
+            <div style="overflow-x: auto;">
+                <table class="table table-bordered" style="background: #fff;">
+                    <thead>
+                        <tr>
+                            <th>Term</th>
+                            <th>Definition</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>HTML</td><td>A language that structures what's on a webpage (headings, buttons, text)</td></tr>
+                        <tr><td>JavaScript</td><td>A programming language that makes the webpage interactive</td></tr>
+                        <tr><td>div</td><td>A basic HTML container — used to group content and layout elements</td></tr>
+                        <tr><td>JSX</td><td>HTML-like code inside JavaScript — used to build UI elements in React</td></tr>
+                        <tr><td>Component</td><td>A reusable piece of UI — like a custom tag (<code>&lt;App /&gt;</code>)</td></tr>
+                        <tr><td>Prop</td><td>A value you pass to a component to customize it</td></tr>
+                        <tr><td>State</td><td>Data that changes — React watches it and updates the UI</td></tr>
+                        <tr><td>useState</td><td>React function that creates a piece of state inside a component</td></tr>
+                        <tr><td>map()</td><td>A function to loop through arrays and render elements</td></tr>
+                        <tr><td>const</td><td>Declares a variable you won't reassign (preferred in React)</td></tr>
+                        <tr><td>Vite</td><td>A tool that runs your app and bundles it for the browser</td></tr>
+                        <tr><td>Bundle</td><td>A compressed, combined version of all your files ready for browsers</td></tr>
+                        <tr><td>Dev Server</td><td>Runs locally so you can test your app in the browser during development</td></tr>
+                        <tr><td>Config Files</td><td>Files like <code>package.json</code>, <code>vite.config.js</code>, or <code>.gitignore</code> that set rules for how your app runs or builds</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Section 3: How React Files Flow -->
+        <section class="setup-section" style="background: #fff; margin: 2rem auto; border-radius: 12px; max-width: 800px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); padding: 2.5rem 2rem;">
+            <h2 style="color: #6B5B95; font-size: 2rem; margin-bottom: 1.5rem;">#3: How React Files Flow</h2>
+            <h4>🗂️ File Structure and Flow</h4>
+            <pre style="background: #f8f9fa; padding: 1rem; border-radius: 6px;">
+my-app-folder/
+├── index.html
+├── src/
+│   ├── main.jsx
+│   ├── App.jsx
+│   └── (your components like TeacherCard.jsx)
+            </pre>
+            <h4>🔁 The Flow:</h4>
+            <ol>
+                <li><b>index.html</b> — A static HTML file with a single <code>&lt;div id="root"&gt;</code></li>
+                <li><b>main.jsx</b> — JavaScript starts here. It tells React to take over the <code>#root</code> div.
+                    <pre style="background: #f8f9fa; padding: 1rem; border-radius: 6px;"><code>ReactDOM.createRoot(document.getElementById('root')).render(&lt;App /&gt;)</code></pre>
+                </li>
+                <li><b>App.jsx</b> — This is your first component. It returns the JSX layout of your app.</li>
+            </ol>
+            <h4>🔄 Summary</h4>
+            <pre style="background: #f8f9fa; padding: 1rem; border-radius: 6px;">
+index.html ➝ main.jsx ➝ App.jsx ➝ Your components
+            </pre>
+            <ul>
+                <li>Your app begins in HTML, but the moment JS loads, React takes over the screen.</li>
+                <li>From <code>App.jsx</code>, you can import and use smaller components to build your UI.</li>
+            </ul>
+        </section>
+    </main>
+
+    <footer>
+        <div>
+            <p>EMAIL: 
+                <a id="copy-email" style="cursor: pointer;">
+                    PATRICK@MTNPASSCODE.COM
+                    <i id="copy-sticky" class="bi bi-sticky"></i>
+                </a>
+            </p>
+            <p>
+                <a href="https://www.linkedin.com/in/patrick-shipley-059893126/" target="_blank" style="text-decoration: none; color: inherit;">
+                    <i class="bi bi-linkedin"></i> LinkedIn
+                </a>
+            </p>
+        </div>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>
