@@ -101,6 +101,8 @@ function App() {
             <p><strong>Objective:</strong> Refactor the repeated HTML into a reusable `TeacherCard` component.</p>
             <p><strong>TeacherCard.jsx:</strong></p>
             <div class="code-block">
+import React from 'react';
+
 function TeacherCard({ teacher }) {
   return (
     &lt;div className="card"&gt;
@@ -108,12 +110,28 @@ function TeacherCard({ teacher }) {
       &lt;p&gt;{teacher.subject}&lt;/p&gt;
     &lt;/div&gt;
   );
-}</div>
+}
+
+export default TeacherCard;</div>
             <p><strong>App Usage:</strong></p>
             <div class="code-block">
-{teachers.map((teacher) => (
-  &lt;TeacherCard key={teacher.name} teacher={teacher} /&gt;
-))}</div>
+import React from 'react';
+import TeacherCard from './TeacherCard';
+
+function App() {
+  const teachers = [
+    { name: "Gad Allon", subject: "Business Management" },
+    { name: "Laura Huang", subject: "Entrepreneurship" }
+  ];
+
+  return (
+    &lt;div&gt;
+      {teachers.map((teacher) => (
+        &lt;TeacherCard key={teacher.name} teacher={teacher} /&gt;
+      ))}
+    &lt;/div&gt;
+  );
+}</div>
             <p><strong>Copilot Prompt:</strong></p>
             <div class="code-block">// Create a reusable TeacherCard component with props</div>
         </section>
@@ -123,18 +141,35 @@ function TeacherCard({ teacher }) {
             <p><strong>Objective:</strong> Track and conditionally render selected teacher</p>
             <p><strong>App.jsx:</strong></p>
             <div class="code-block">
-const [selected, setSelected] = useState("");
+import React, { useState } from 'react';
+import TeacherCard from './TeacherCard';
 
-{teachers.map((teacher) => (
-  &lt;TeacherCard
-    key={teacher.name}
-    teacher={teacher}
-    selected={selected}
-    onSelect={setSelected}
-  /&gt;
-))}</div>
+function App() {
+  const [selected, setSelected] = useState("");
+  const teachers = [
+    { name: "Gad Allon", subject: "Business Management" },
+    { name: "Laura Huang", subject: "Entrepreneurship" }
+  ];
+
+  return (
+    &lt;div&gt;
+      {teachers.map((teacher) => (
+        &lt;TeacherCard
+          key={teacher.name}
+          teacher={teacher}
+          selected={selected}
+          onSelect={setSelected}
+        /&gt;
+      ))}
+    &lt;/div&gt;
+  );
+}
+
+export default App;</div>
             <p><strong>TeacherCard.jsx:</strong></p>
             <div class="code-block">
+import React from 'react';
+
 function TeacherCard({ teacher, selected, onSelect }) {
   const isSelected = selected === teacher.name;
 
@@ -147,7 +182,9 @@ function TeacherCard({ teacher, selected, onSelect }) {
       &lt;/button&gt;
     &lt;/div&gt;
   );
-}</div>
+}
+
+export default TeacherCard;</div>
             <p><strong>Copilot Prompt:</strong></p>
             <div class="code-block">// Add a button to select this teacher
 // Highlight the selected teacher using props</div>
