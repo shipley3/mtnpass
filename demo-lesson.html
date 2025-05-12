@@ -73,32 +73,84 @@ return (
         </section>
 
         <section class="setup-section" style="background: #fff; margin: 2rem auto; border-radius: 12px; max-width: 800px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); padding: 2.5rem 2rem;">
-            <h2 style="color: #6B5B95; font-size: 2rem; margin-bottom: 1.5rem;">Step 3: Expanding to an Array + .map()</h2>
-            <p><strong>Objective:</strong> Create multiple cards with `.map()`</p>
+            <h2 style="color: #6B5B95; font-size: 2rem; margin-bottom: 1.5rem;">Step 3A: Inline Mapping with Basic HTML</h2>
+            <p><strong>Objective:</strong> Show multiple teachers using `.map()` without using a separate component.</p>
             <div class="code-block">
-const teachers = [
-  { name: "Gad Allon", subject: "Business Management" },
-  { name: "Laura Huang", subject: "Entrepreneurship" }
-];
+function App() {
+  const teachers = [
+    { name: "Gad Allon", subject: "Business Management" },
+    { name: "Laura Huang", subject: "Entrepreneurship" }
+  ];
 
-{teachers.map(teacher => (
-  &lt;TeacherCard teacher={teacher} /&gt;
+  return (
+    &lt;div&gt;
+      {teachers.map((teacher) => (
+        &lt;div key={teacher.name} className="card"&gt;
+          &lt;h2&gt;{teacher.name}&lt;/h2&gt;
+          &lt;p&gt;{teacher.subject}&lt;/p&gt;
+        &lt;/div&gt;
+      ))}
+    &lt;/div&gt;
+  );
+}</div>
+            <p><strong>Prompt:</strong> "What if we want to repeat this pattern in multiple places?"</p>
+        </section>
+
+        <section class="setup-section" style="background: #fff; margin: 2rem auto; border-radius: 12px; max-width: 800px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); padding: 2.5rem 2rem;">
+            <h2 style="color: #6B5B95; font-size: 2rem; margin-bottom: 1.5rem;">Step 3B: Creating a Reusable Component</h2>
+            <p><strong>Objective:</strong> Refactor the repeated HTML into a reusable `TeacherCard` component.</p>
+            <p><strong>TeacherCard.jsx:</strong></p>
+            <div class="code-block">
+function TeacherCard({ teacher }) {
+  return (
+    &lt;div className="card"&gt;
+      &lt;h2&gt;{teacher.name}&lt;/h2&gt;
+      &lt;p&gt;{teacher.subject}&lt;/p&gt;
+    &lt;/div&gt;
+  );
+}</div>
+            <p><strong>App Usage:</strong></p>
+            <div class="code-block">
+{teachers.map((teacher) => (
+  &lt;TeacherCard key={teacher.name} teacher={teacher} /&gt;
 ))}</div>
             <p><strong>Copilot Prompt:</strong></p>
-            <div class="code-block">// Map over teachers to show each as a card</div>
+            <div class="code-block">// Create a reusable TeacherCard component with props</div>
         </section>
 
         <section class="setup-section" style="background: #fff; margin: 2rem auto; border-radius: 12px; max-width: 800px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); padding: 2.5rem 2rem;">
             <h2 style="color: #6B5B95; font-size: 2rem; margin-bottom: 1.5rem;">Step 4: Add a "Select" Button</h2>
             <p><strong>Objective:</strong> Track and conditionally render selected teacher</p>
+            <p><strong>App.jsx:</strong></p>
             <div class="code-block">
 const [selected, setSelected] = useState("");
 
-&lt;button onClick={() => setSelected(teacher.name)}&gt;
-  {selected === teacher.name ? "Selected" : "Select"}
-&lt;/button&gt;</div>
+{teachers.map((teacher) => (
+  &lt;TeacherCard
+    key={teacher.name}
+    teacher={teacher}
+    selected={selected}
+    onSelect={setSelected}
+  /&gt;
+))}</div>
+            <p><strong>TeacherCard.jsx:</strong></p>
+            <div class="code-block">
+function TeacherCard({ teacher, selected, onSelect }) {
+  const isSelected = selected === teacher.name;
+
+  return (
+    &lt;div className={`card ${isSelected ? "selected" : ""}`}&gt;
+      &lt;h2&gt;{teacher.name}&lt;/h2&gt;
+      &lt;p&gt;{teacher.subject}&lt;/p&gt;
+      &lt;button onClick={() => onSelect(teacher.name)}&gt;
+        {isSelected ? "Selected" : "Select"}
+      &lt;/button&gt;
+    &lt;/div&gt;
+  );
+}</div>
             <p><strong>Copilot Prompt:</strong></p>
-            <div class="code-block">// Add a button to select this teacher</div>
+            <div class="code-block">// Add a button to select this teacher
+// Highlight the selected teacher using props</div>
         </section>
 
         <section class="setup-section" style="background: #fff; margin: 2rem auto; border-radius: 12px; max-width: 800px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); padding: 2.5rem 2rem;">
